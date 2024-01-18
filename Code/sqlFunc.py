@@ -1,4 +1,3 @@
-from doctest import Example
 import sqlite3
 
 # Connection to DB
@@ -33,12 +32,15 @@ def search_for_file(dName: str = None, dateWritten: str = None, theme: str = Non
     """
     Search through the SQL file for the file needed. Can sort through by: Name, written, theme and date added.
     """
-    
+    cursor.execute('SELECT storageLoc FROM docData WHERE docName = ? OR dateWritten = ? OR theme = ? OR dateAdded = ?', (dName, dateWritten, theme, dateAdded))
+    return cursor.fetchall()
+
+def return_All_Doc():
+    """
+    Returns all the documents in the database.
+    """
     try:
-        cursor.execute('SELECT * FROM docData WHERE docName = ? OR dateWritten = ? OR theme = ? OR dateAdded = ?', (dName, dateWritten, theme, dateAdded))
+        cursor.execute('SELECT * FROM docData')
         return cursor.fetchall()
     except Exception as err:
         raise Exception(str(err))
-
-
-
