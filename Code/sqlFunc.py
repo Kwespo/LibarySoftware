@@ -6,7 +6,7 @@ conn = sqlite3.Connection('Database/documents.db')
 cursor = conn.cursor()
 
 
-def insert_file_Data(dName : str, storLoc : str , dateAdded : str, theme : str, dateWritten : str = 'Not Provided', authName : str = 'Not Provided') -> str:
+def insert_File_Data(dName : str, storLoc : str , dateAdded : str, theme : str, dateWritten : str = 'Not Provided', authName : str = 'Not Provided') -> str:
     """ Insert the data into the sql file
 
     Args:
@@ -28,7 +28,7 @@ def insert_file_Data(dName : str, storLoc : str , dateAdded : str, theme : str, 
     except Exception as err:
         raise Exception(str(err))
 
-def search_for_file(dName: str = None, dateWritten: str = None, theme: str = None, dateAdded: str = None):
+def search_For_File(dName: str = None, dateWritten: str = None, theme: str = None, dateAdded: str = None):
     """
     Search through the SQL file for the file needed. Can sort through by: Name, written, theme and date added.
     """
